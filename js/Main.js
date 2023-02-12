@@ -6,14 +6,15 @@ var fireworks;
     let rocket;
     let particleAmount = 100;
     let sizeSlider;
-    let sizeSliderValue = 15;
+    let sizeSliderValue = 25;
     let lifetimeSlider;
-    let lifetimeSliderValue = 20;
+    let lifetimeSliderValue = 35;
     let color1Picker;
     let color1PickerValue = "#7720B1";
     let radioSquare;
     let radioTriangle;
-    let particleShape;
+    let radioCircle;
+    let particleShape = "circle";
     let saveButton1;
     let saveButton2;
     let saveButton3;
@@ -21,12 +22,14 @@ var fireworks;
     let loadButton2;
     let loadButton3;
     let form;
+    let database;
     async function handleLoad() {
         sizeSlider = document.getElementById("sizeSlider");
         lifetimeSlider = document.getElementById("lifetimeSlider");
         color1Picker = document.getElementById("color1Picker");
         radioSquare = document.getElementById("square");
         radioTriangle = document.getElementById("triangle");
+        radioCircle = document.getElementById("circle");
         saveButton1 = document.getElementById("saveButton1");
         saveButton2 = document.getElementById("saveButton2");
         saveButton3 = document.getElementById("saveButton3");
@@ -34,18 +37,13 @@ var fireworks;
         loadButton2 = document.getElementById("loadButton2");
         loadButton3 = document.getElementById("loadButton3");
         form = document.querySelector("form");
-        //let response: Response = await fetch("Data.json");
-        //let content: string = await response.text();
-        //let data: Data = JSON.parse(content);
-        //generateContent(data);
-        // loadJSON method to open the JSON file.
-        async function loadNames() {
+        async function loadRockets() {
             const response = await fetch('https://my-json-server.typicode.com/Leech1208/EIA2_Endabgabe/saveslots');
-            const names = await response.json();
-            console.log(names[0].save2);
-            // logs [{ name: 'Joker'}, { name: 'Batman' }]
+            database = await response.json();
+            //database[0].save2["farbe"] = "#fffff";
+            //console.log(database[0].save2); 
         }
-        loadNames();
+        loadRockets();
         form.addEventListener("change", handleChange);
         saveButton1.addEventListener("click", writeSlot1);
         saveButton2.addEventListener("click", writeSlot2);
@@ -72,31 +70,109 @@ var fireworks;
     function checkShape() {
         if (radioSquare.checked == true)
             particleShape = "square";
-        else if (radioTriangle.checked == true)
+        if (radioTriangle.checked == true)
             particleShape = "triangle";
-        else
+        if (radioCircle.checked == true)
             particleShape = "circle";
     }
     async function writeSlot1(_event) {
-        console.log("Save to Slot 1");
-        let formData = new FormData(form);
-        let query = new URLSearchParams(formData);
-        await fetch("index.html?" + query.toString());
+        database[0].save1["size"] = sizeSliderValue;
+        database[0].save1["lifetime"] = lifetimeSliderValue;
+        database[0].save1["shape"] = particleShape;
+        database[0].save1["color"] = color1PickerValue;
+        console.log(database[0]);
     }
     function writeSlot2(_event) {
-        console.log("Save to Slot 2");
+        database[0].save2["size"] = sizeSliderValue;
+        database[0].save2["lifetime"] = lifetimeSliderValue;
+        database[0].save2["shape"] = particleShape;
+        database[0].save2["color"] = color1PickerValue;
+        console.log(database[0]);
     }
     function writeSlot3(_event) {
-        console.log("Save to Slot 3");
+        database[0].save3["size"] = sizeSliderValue;
+        database[0].save3["lifetime"] = lifetimeSliderValue;
+        database[0].save3["shape"] = particleShape;
+        database[0].save3["color"] = color1PickerValue;
+        console.log(database[0]);
     }
     function loadSlot1(_event) {
-        console.log("Load Slot 1");
+        sizeSliderValue = database[0].save1["size"];
+        sizeSlider.value = database[0].save1["size"];
+        lifetimeSliderValue = database[0].save1["lifetime"];
+        lifetimeSlider.value = database[0].save1["lifetime"];
+        particleShape = database[0].save1["shape"];
+        switch (database[0].save1["shape"]) {
+            case "circle":
+                radioCircle.checked = true;
+                radioSquare.checked = false;
+                radioTriangle.checked = false;
+                break;
+            case "triangle":
+                radioCircle.checked = false;
+                radioSquare.checked = false;
+                radioTriangle.checked = true;
+                break;
+            case "square":
+                radioCircle.checked = false;
+                radioSquare.checked = true;
+                radioTriangle.checked = false;
+                break;
+        }
+        color1PickerValue = database[0].save1["color"];
+        color1Picker.value = database[0].save1["color"];
     }
     function loadSlot2(_event) {
-        console.log("Load Slot 2");
+        sizeSliderValue = database[0].save2["size"];
+        sizeSlider.value = database[0].save2["size"];
+        lifetimeSliderValue = database[0].save2["lifetime"];
+        lifetimeSlider.value = database[0].save2["lifetime"];
+        particleShape = database[0].save2["shape"];
+        switch (database[0].save2["shape"]) {
+            case "circle":
+                radioCircle.checked = true;
+                radioSquare.checked = false;
+                radioTriangle.checked = false;
+                break;
+            case "triangle":
+                radioCircle.checked = false;
+                radioSquare.checked = false;
+                radioTriangle.checked = true;
+                break;
+            case "square":
+                radioCircle.checked = false;
+                radioSquare.checked = true;
+                radioTriangle.checked = false;
+                break;
+        }
+        color1PickerValue = database[0].save2["color"];
+        color1Picker.value = database[0].save2["color"];
     }
     function loadSlot3(_event) {
-        console.log("Load Slot 3");
+        sizeSliderValue = database[0].save3["size"];
+        sizeSlider.value = database[0].save3["size"];
+        lifetimeSliderValue = database[0].save3["lifetime"];
+        lifetimeSlider.value = database[0].save3["lifetime"];
+        particleShape = database[0].save3["shape"];
+        switch (database[0].save3["shape"]) {
+            case "circle":
+                radioCircle.checked = true;
+                radioSquare.checked = false;
+                radioTriangle.checked = false;
+                break;
+            case "triangle":
+                radioCircle.checked = false;
+                radioSquare.checked = false;
+                radioTriangle.checked = true;
+                break;
+            case "square":
+                radioCircle.checked = false;
+                radioSquare.checked = true;
+                radioTriangle.checked = false;
+                break;
+        }
+        color1PickerValue = database[0].save3["color"];
+        color1Picker.value = database[0].save3["color"];
     }
     function shoot(_event) {
         for (let i = 0; i < particleAmount; i++) {

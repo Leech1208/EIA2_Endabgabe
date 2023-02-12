@@ -40,9 +40,9 @@ var fireworks;
         //generateContent(data);
         // loadJSON method to open the JSON file.
         async function loadNames() {
-            const response = await fetch('https://my-json-server.typicode.com/Leech1208/EIA2_Endabgabe/save3');
+            const response = await fetch('https://my-json-server.typicode.com/Leech1208/EIA2_Endabgabe/saveslots');
             const names = await response.json();
-            console.log(names);
+            console.log(names[0].save2);
             // logs [{ name: 'Joker'}, { name: 'Batman' }]
         }
         loadNames();

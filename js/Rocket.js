@@ -16,11 +16,17 @@ var fireworks;
             this.shape = _shape;
         }
         draw() {
-            if (this.shape == "square") {
-                this.drawSquare();
+            switch (this.shape) {
+                case "circle":
+                    this.drawCircle();
+                    break;
+                case "triangle":
+                    this.drawTriangle();
+                    break;
+                case "square":
+                    this.drawSquare();
+                    break;
             }
-            else
-                this.drawCircle();
         }
         drawCircle() {
             fireworks.crc2.save();
@@ -35,6 +41,16 @@ var fireworks;
             fireworks.crc2.fillStyle = this.color1;
             fireworks.crc2.beginPath();
             fireworks.crc2.fillRect(this.position.x - 1 * this.size, this.position.y - 1 * this.size, 2 * this.size, 2 * this.size);
+            fireworks.crc2.fill();
+            fireworks.crc2.restore();
+        }
+        drawTriangle() {
+            fireworks.crc2.save();
+            fireworks.crc2.fillStyle = this.color1;
+            fireworks.crc2.beginPath();
+            fireworks.crc2.moveTo(this.position.x - 1 * this.size, this.position.y + 1 * this.size);
+            fireworks.crc2.lineTo(this.position.x + 2 * this.size, this.position.y + 0 * this.size);
+            fireworks.crc2.lineTo(this.position.x - 1 * this.size, this.position.y - 1 * this.size);
             fireworks.crc2.fill();
             fireworks.crc2.restore();
         }

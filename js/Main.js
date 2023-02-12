@@ -40,8 +40,6 @@ var fireworks;
         async function loadRockets() {
             const response = await fetch('https://my-json-server.typicode.com/Leech1208/EIA2_Endabgabe/saveslots');
             database = await response.json();
-            //database[0].save2["farbe"] = "#fffff";
-            //console.log(database[0].save2); 
         }
         loadRockets();
         form.addEventListener("change", handleChange);
@@ -187,7 +185,6 @@ var fireworks;
             rocket.move(1 / 2);
             rocket.draw();
             fireworks.crc2.globalAlpha = 0.3;
-            // console.log();
         }
         deleteExpendables();
     }

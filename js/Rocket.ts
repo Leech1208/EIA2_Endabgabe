@@ -21,10 +21,17 @@ namespace fireworks {
         }
 
         draw(): void {
-            if (this.shape == "square") {
-                this.drawSquare();
-            }
-            else this.drawCircle();
+            switch (this.shape) {
+                case "circle":
+                    this.drawCircle();
+                    break;
+                case "triangle":
+                    this.drawTriangle();
+                    break;
+                case "square":
+                    this.drawSquare();
+                    break;
+             }
         }
 
         drawCircle(): void {
@@ -41,6 +48,17 @@ namespace fireworks {
             crc2.fillStyle = this.color1;
             crc2.beginPath();
             crc2.fillRect(this.position.x - 1 * this.size, this.position.y - 1 * this.size, 2 * this.size, 2 * this.size);
+            crc2.fill();
+            crc2.restore();
+        }
+
+        drawTriangle(): void {
+            crc2.save();
+            crc2.fillStyle = this.color1;
+            crc2.beginPath();
+            crc2.moveTo(this.position.x - 1 * this.size, this.position.y + 1 * this.size);
+            crc2.lineTo(this.position.x + 2 * this.size, this.position.y + 0 * this.size);
+            crc2.lineTo(this.position.x - 1 * this.size, this.position.y - 1 * this.size);
             crc2.fill();
             crc2.restore();
         }

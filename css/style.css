@@ -1,0 +1,28 @@
+#form {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: larger;
+    color: aliceblue;
+    width: 70px;
+    height: 800px;
+    background-color: transparent;
+    position: absolute;
+    z-index: 1;
+    margin: 20px;
+}
+
+#canvas {
+    position: absolute;
+    z-index: 0;
+}
+
+input {
+    cursor: pointer;
+}
+
+button {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+fieldset {
+    width: 180px;
+}

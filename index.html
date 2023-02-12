@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endabgabe Nicolai Pfrengle</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/Main.js"></script>
+    <script src="js/Rocket.js"></script>
+    <script src="js/Vector.js"></script>
+
+</head>
+
+<body>
+    <canvas id="canvas" width="1280" height="720"></canvas>
+    <form>
+        <div id="form">
+            <h2>FIREWORKS</h2>
+            <fieldset>
+                <legend>Settings</legend>
+                <label for="size">Size</label>
+                <br>
+                <input type="range" name="Size" id="sizeSlider" min="5" max="50" step="1">
+                <br>
+                <label for="lifetime">Lifetime</label>
+                <br>
+                <input type="range" name="Lifetime" id="lifetimeSlider" min="20" max="50">
+                <br>
+                <input type="radio" name="Form" id="circle" value="Circle" checked>
+                <label for="circle">Circle</label>
+                <br>
+                <input type="radio" name="Form" id="triangle" value="Triangle">
+                <label for="triangle">Triangle</label>
+                <br>
+                <input type="radio" name="Form" id="square" value="Square">
+                <label for="square">Square</label>
+                <br><br>
+                <label for="color1">Color 1</label>
+                <input type="color" name="Color1" id="color1Picker" value="#7720B1">
+                <br><br>
+                <button type="button" id="saveButton1">Save I</button>
+                <button type="button" id="saveButton2">Save II</button>
+                <button type="button" id="saveButton3">Save III</button>  
+                <br><br>           
+                <button type="button" id="loadButton1">Load I</button>
+                <button type="button" id="loadButton2">Load II</button>
+                <button type="button" id="loadButton3">Load III</button>
+            </fieldset>
+        </div>
+    </form>
+
+
+</body>
+
+</html>

@@ -38,8 +38,14 @@ var fireworks;
         //let content: string = await response.text();
         //let data: Data = JSON.parse(content);
         //generateContent(data);
-        // let url: string = "https://webuser.hs-furtwangen.de/~del/Nico/Rockets.json";
-        // fetch(url).then(response => response.json()).then(data => data);
+        // loadJSON method to open the JSON file.
+        async function loadNames() {
+            const response = await fetch('https://my-json-server.typicode.com/Leech1208/EIA2_Endabgabe/save3');
+            const names = await response.json();
+            console.log(names);
+            // logs [{ name: 'Joker'}, { name: 'Batman' }]
+        }
+        loadNames();
         form.addEventListener("change", handleChange);
         saveButton1.addEventListener("click", writeSlot1);
         saveButton2.addEventListener("click", writeSlot2);
@@ -100,7 +106,6 @@ var fireworks;
     }
     fireworks.shoot = shoot;
     function update() {
-        // console.log("Update");
         fireworks.crc2.fillRect(0, 0, fireworks.crc2.canvas.width, fireworks.crc2.canvas.height);
         for (let rocket of rockets) {
             rocket.move(1 / 2);

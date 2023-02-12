@@ -45,8 +45,14 @@ namespace fireworks {
 
         //generateContent(data);
 
-        // let url: string = "https://webuser.hs-furtwangen.de/~del/Nico/Rockets.json";
-        // fetch(url).then(response => response.json()).then(data => data);
+        // loadJSON method to open the JSON file.
+        async function loadNames() {
+            const response = await fetch('https://my-json-server.typicode.com/Leech1208/EIA2_Endabgabe/save3');
+            const names = await response.json();
+            console.log(names); 
+            // logs [{ name: 'Joker'}, { name: 'Batman' }]
+        }
+        loadNames();
 
         form.addEventListener("change", handleChange);
         saveButton1.addEventListener("click", writeSlot1);
@@ -85,7 +91,6 @@ namespace fireworks {
         else particleShape = "circle";
     }
 
-
     async function writeSlot1(_event: Event): Promise<void> {
         console.log("Save to Slot 1");
         let formData: FormData = new FormData(form);
@@ -119,8 +124,6 @@ namespace fireworks {
     }
 
     function update(): void {
-        // console.log("Update");
-
         crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
 
         for (let rocket of rockets) {
